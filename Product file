@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spiritual Products</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f1e8;
+        }
+
+        header {
+            background-color: #4d774e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 40px;
+        }
+
+        .product-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .product-card h3 {
+            margin: 10px 0;
+        }
+
+        .price {
+            color: #c1121f;
+            font-weight: bold;
+        }
+
+        button {
+            margin-top: 8px;
+            padding: 8px 12px;
+            border: none;
+            background-color: #4d774e;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #355f38;
+        }
+
+        footer {
+            background-color: #4d774e;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🪔 Spiritual Product Collection</h1>
+</header>
+
+<h2>Our Sacred Products</h2>
+
+<div class="product-container">
+
+    <div class="product-card">
+        <img src="https://www.soulflower.in/cdn/shop/files/Mogra_c6cb3036-65a6-4c5c-a890-9b3213616cf4.jpg?v=1759904828&width=1200" alt="Agarbatti">
+        <h3>Agarbatti</h3>
+        <p class="price">₹120</p>
+        <button>Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAmsoMsyjU9S9ZXF39YP4DxxFPCzZikIuIQg&s" alt="Dhoop">
+        <h3>Dhoop Sticks</h3>
+        <p class="price">₹150</p>
+        <button>Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+        <img src="https://cdn.shopify.com/s/files/1/0632/2526/6422/files/diyas-brass-shanku-chakra-diya-set-of-two-1.jpg?v=1768010009" alt="Brass Diya">
+        <h3>Brass Diya</h3>
+        <p class="price">₹350</p>
+        <button>Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+        <img src="https://norbulingka.org/cdn/shop/files/OMWR00000-1.webp?v=1723197195&width=2048" alt="Rudraksha">
+        <h3>Rudraksha Mala</h3>
+        <p class="price">₹499</p>
+        <button>Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQANBrbWEv7jxPJzW1x0iBFvjDZNrSZky1Pcw&s" alt="Tulsi Mala">
+        <h3>Tulsi Mala</h3>
+        <p class="price">₹250</p>
+        <button>Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+        <img src="https://www.mypoojabox.in/cdn/shop/files/DSC01568copy.jpg?v=1709903166" alt="Singing Bowl">
+        <h3>Tibetan Singing Bowl</h3>
+        <p class="price">₹1500</p>
+        <button>Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+        <img src="https://www.alliedware.in/cdn/shop/files/HTBDDI42_2.jpg?v=1713422332&width=1445" alt="Shankh">
+        <h3>Shankh (Conch)</h3>
+        <p class="price">₹800</p>
+        <button>Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVGuerAhjAY7yYtHf78wDrdZWPf0nrbU58Tw&s" alt="Chandan">
+        <h3>Sandalwood Paste</h3>
+        <p class="price">₹200</p>
+        <button>Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+        <img src="https://www.jiomart.com/images/product/original/rv5wjm2k3w/reiki-crystal-products-12-chakra-tumble-stone-kit-for-reiki-healing-crystal-healing-product-images-orv5wjm2k3w-p603438044-0-202308010859.jpg?im=Resize=(420,420)" alt="Crystal">
+        <h3>Healing Crystal</h3>
+        <p class="price">₹650</p>
+        <button>Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiwUBOXL-7GELpJvEJzEyRwA1wT_5EoxCcYg&s" alt="Gangajal">
+        <h3>Gangajal Bottle</h3>
+        <p class="price">₹100</p>
+        <button>Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+        <img src="https://www.indicinspirations.com/cdn/shop/products/brass-pooja-thali-set-pooja-essentials-167860.jpg?v=1632977113&width=899" alt="Puja Thali">
+        <h3>Puja Thali Set</h3>
+        <p class="price">₹700</p>
+        <button>Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+        <img src="https://www.craftsnchisel.com/cdn/shop/products/15-inches-lord-ganesh-brass-idol-stonework-ganpati-statue-for-home-decor-housewarming-gift-indian-home-decor-crafts-n-chisel.jpg?v=1671240907" alt="God Idol">
+        <h3>Ganesha Idol</h3>
+        <p class="price">₹1200</p>
+        <button>Add to Cart</button>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 Spiritual Store | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
+
