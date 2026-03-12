@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenTask | Productivity Hub</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f8fafc;
+            --accent: #38bdf8;
+            --danger: #ef4444;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .full-width { grid-column: span 2; }
+
+        h2 { margin-top: 0; color: var(--accent); border-bottom: 1px solid #334155; padding-bottom: 10px; }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: white;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        button:hover { opacity: 0.9; }
+
+        .task-item {
+            background: #334155;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .deadline-tag {
+            font-size: 0.8rem;
+            color: var(--accent);
+            display: block;
+        }
+
+        .delete-btn { background: var(--danger); color: white; padding: 5px 10px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card full-width">
+        <h2>Add New Task</h2>
+        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 10px;">
+            <input type="text" id="taskInput" placeholder="What needs to be done?">
+            <input type="datetime-local" id="deadlineInput">
+            <button onclick="addTask()">Add Task</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Active Deadlines</h2>
+        <div id="taskList"></div>
+    </div>
+
+    <div class="card">
+        <h2>Quick Notes</h2>
+        <textarea id="quickNotes" rows="10" placeholder="Jot down ideas here... (Auto-saves)"></textarea>
+    </div>
+</div>
+
+<script>
+    // Load data on start
+    window.onload = () => {
+        const savedNotes = localStorage.getItem('zenNotes');
+        if (savedNotes) document.getElementById('quickNotes').value = savedNotes;
+        renderTasks();
+        setInterval(checkAlarms, 1000); // Check for deadlines every second
+    };
+
+    // Auto-save Notes
+    document.getElementById('quickNotes').addEventListener('input', (e) => {
+        localStorage.setItem('zenNotes', e.target.value);
+    });
+
+    let tasks = JSON.parse(localStorage.getItem('zenTasks')) || [];
+
+    function addTask() {
+        const text = document.getElementById('taskInput').value;
+        const deadline = document.getElementById('deadlineInput').value;
+        
+        if (!text || !deadline) return alert("Please fill in both task and deadline");
+
+        const newTask = {
+            id: Date.now(),
+            text: text,
+            deadline: deadline,
+            alarmed: false
+        };
+
+        tasks.push(newTask);
+        saveAndRender();
+        document.getElementById('taskInput').value = '';
+    }
+
+    function deleteTask(id) {
+        tasks = tasks.filter(t => t.id !== id);
+        saveAndRender();
+    }
+
+    function saveAndRender() {
+        localStorage.setItem('zenTasks', JSON.stringify(tasks));
+        renderTasks();
+    }
+
+    function renderTasks() {
+        const list = document.getElementById('taskList');
+        list.innerHTML = '';
+        tasks.forEach(task => {
+            list.innerHTML += `
+                <div class="task-item">
+                    <div>
+                        <strong>${task.text}</strong>
+                        <span class="deadline-tag">Due: ${new Date(task.deadline).toLocaleString()}</span>
+                    </div>
+                    <button class="delete-btn" onclick="deleteTask(${task.id})">Done</button>
+                </div>
+            `;
+        });
+    }
+
+    function checkAlarms() {
+        const now = new Date().getTime();
+        tasks.forEach(task => {
+            const taskTime = new Date(task.deadline).getTime();
+            if (taskTime <= now && !task.alarmed) {
+                task.alarmed = true;
+                alert(`⏰ ALARM: ${task.text} is due now!`);
+                saveAndRender();
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
