@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Forecast</title>
+  <style>
+    /* CSS goes inside the style tag if not using a separate file */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #83a4d4, #b6fbff);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .weather-app {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      width: 320px; /* Slightly wider for better spacing */
+    }
+
+    .weather-app h1 {
+      margin-bottom: 1rem;
+    }
+
+    input {
+      padding: 0.5rem;
+      width: 65%; /* Adjusted to fit button better */
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      outline: none;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background: #0077ff;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #005fcc;
+    }
+
+    .weather-result {
+      margin-top: 1.5rem;
+      border-top: 1px solid #eee;
+      padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="weather-app">
+    <h1>🌤 Weather Forecast</h1>
+    <input type="text" id="city-input" placeholder="Enter city name...">
+    <button id="search-btn">Search</button>
+
+    <div class="weather-result">
+      <h2 id="city-name">City Name</h2>
+      <p id="temperature">Temperature: -- °C</p>
+      <p id="description">Condition: --</p>
+      <p id="humidity">Humidity: --%</p>
+      <p id="wind">Wind Speed: -- km/h</p>
+    </div>
+  </div>
+
+  <script>
+    // A tiny bit of JS to make it interactive for testing
+    document.getElementById('search-btn').addEventListener('click', () => {
+      const city = document.getElementById('city-input').value;
+      if(city) {
+        document.getElementById('city-name').innerText = city;
+        // This is where you would fetch real API data
+      }
+    });
+  </script>
+</body>
+</html>
