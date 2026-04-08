@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Go Quiz Website</title>
+  <style>
+    /* Fixed CSS */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .quiz-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 450px;
+    }
+
+    h1 { text-align: center; color: #333; }
+
+    .question-block {
+      text-align: left;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: #fafafa;
+      border-radius: 8px;
+    }
+
+    .question-text { font-weight: bold; margin-bottom: 0.5rem; }
+
+    label { display: block; cursor: pointer; padding: 0.2rem 0; }
+
+    button {
+      width: 100%;
+      padding: 0.8rem;
+      background: #0077ff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover { background: #005fcc; }
+
+    #result {
+      margin-top: 1.5rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+      text-align: center;
+      color: #0077ff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quiz-container">
+    <h1>📝 Go Quiz</h1>
+    <div id="quiz">Loading quiz...</div>
+    <button id="submit">Submit Answers</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    // 1. Hardcoded data to avoid CORS errors when opening locally
+    const quizData = [
+      {
+        "question": "What is the capital of India?",
+        "options": ["Delhi", "Mumbai", "Kolkata", "Chennai"],
+        "answer": "Delhi"
+      },
+      {
+        "question": "Go language was developed at?",
+        "options": ["Microsoft", "Google", "IBM", "Oracle"],
+        "answer": "Google"
+      }
+    ];
+
+    function displayQuiz(questions) {
+      const quizDiv = document.getElementById('quiz');
+      quizDiv.innerHTML = "";
+
+      questions.forEach((q, index) => {
+        // Created a container for each question for better styling
+        const questionBlock = document.createElement('div');
+        questionBlock.className = 'question-block';
+        
+        let optionsHtml = q.options.map(opt => `
+          <label>
+            <input type="radio" name="q${index}" value="${opt}"> ${opt}
+          </label>
+        `).join('');
+
+        questionBlock.innerHTML = `
+          <p class="question-text">${index + 1}. ${q.question}</p>
+          ${optionsHtml}
+        `;
+        quizDiv.appendChild(questionBlock);
+      });
+    }
+
+    function checkAnswers(questions) {
+      let score = 0;
+      let allAnswered = true;
+
+      questions.forEach((q, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        if (selected) {
+          if (selected.value === q.answer) {
+            score++;
+          }
+        } else {
+          allAnswered = false;
+        }
+      });
+
+      if (!allAnswered) {
+        alert("Please answer all questions before submitting!");
+        return;
+      }
+
+      document.getElementById('result').innerText = `🎉 You scored ${score} out of ${questions.length}!`;
+    }
+
+    // Initialize
+    displayQuiz(quizData);
+    document.getElementById('submit').onclick = () => checkAnswers(quizData);
+  </script>
+</body>
+</html>
