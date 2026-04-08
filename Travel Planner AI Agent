@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Planner AI Agent</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #2c3e50;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.7rem;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.5rem;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    .output {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: #f4f4f4;
+      border-radius: 5px;
+      min-height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Travel Planner AI Agent</h1>
+    <p>Plan your next adventure with ease</p>
+  </header>
+
+  <div class="container">
+    <h2>Enter Your Travel Details</h2>
+    <form>
+      <label for="destination">Destination</label>
+      <input type="text" id="destination" placeholder="e.g., Paris, Tokyo">
+
+      <label for="dates">Travel Dates</label>
+      <input type="text" id="dates" placeholder="e.g., 12th - 20th June">
+
+      <label for="interests">Interests</label>
+      <select id="interests">
+        <option value="sightseeing">Sightseeing</option>
+        <option value="adventure">Adventure</option>
+        <option value="relaxation">Relaxation</option>
+        <option value="culture">Culture</option>
+      </select>
+
+      <label for="notes">Additional Notes</label>
+      <textarea id="notes" rows="4" placeholder="Any specific preferences..."></textarea>
+
+      <button type="button">Generate Plan</button>
+    </form>
+
+    <div class="output">
+      <h3>Your Travel Plan Will Appear Here</h3>
+      <p>(Currently static — add JavaScript later to simulate AI responses)</p>
+    </div>
+  </div>
+</body>
+</html>
