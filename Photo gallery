@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nature Photo Gallery</title>
+  <style>
+    /* Base Styles */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fdfdfd;
+      color: #333;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    button {
+      margin: 1rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      background: #333;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    /* Dark Mode */
+    body.dark {
+      background: #121212;
+      color: #fdfdfd;
+    }
+
+    body.dark button {
+      background: #fdfdfd;
+      color: #121212;
+    }
+
+    /* Masonry Grid Fixes */
+    .gallery {
+      column-count: 3;
+      column-gap: 1rem;
+      padding: 1rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      display: block;
+      transition: transform 0.3s;
+      /* Prevents image from splitting across columns */
+      break-inside: avoid; 
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) { .gallery { column-count: 2; } }
+    @media (max-width: 600px) { .gallery { column-count: 1; } }
+  </style>
+</head>
+<body>
+
+  <button id="theme-toggle">🌙 Toggle Dark/Light</button>
+
+  <div class="gallery">
+    <img src="https://picsum.photos/400/600?random=1" alt="Nature 1">
+    <img src="https://picsum.photos/400/400?random=2" alt="Nature 2">
+    <img src="https://picsum.photos/400/500?random=3" alt="Nature 3">
+    <img src="https://picsum.photos/400/700?random=4" alt="Nature 4">
+    <img src="https://picsum.photos/400/450?random=5" alt="Nature 5">
+    <img src="https://picsum.photos/400/550?random=6" alt="Nature 6">
+  </div>
+
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+    });
+  </script>
+</body>
+</html>
